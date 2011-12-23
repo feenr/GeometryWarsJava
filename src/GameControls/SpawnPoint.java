@@ -14,14 +14,17 @@ public class SpawnPoint {
 			int randomSpawn = (int)(Math.random()*4);
 			Enemy enemy;
 			if(randomSpawn == 0){
-				enemy = new EnemeyFollower();
+                            //enemy=new EnemyDodger();
+                            enemy = new EnemeyFollower();
 			}
 			else if(randomSpawn == 1){
-				enemy = new EnemyParent();
+                            //enemy=new EnemyDodger();
+                            enemy = new EnemyParent();
 			}else if(randomSpawn ==2){
-				enemy = new EnemyRandomWalker();
+                            //enemy=new EnemyDodger();
+                            enemy = new EnemyRandomWalker();
 			}else if(randomSpawn ==3){
-				enemy=new EnemyDodger();
+                            enemy=new EnemyDodger();
 			}else{
 				enemy=new EnemyDodger();
 			}

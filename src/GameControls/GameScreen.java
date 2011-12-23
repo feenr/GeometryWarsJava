@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 
 import GameControls.*;
+import java.awt.BasicStroke;
 import javax.swing.JPanel;
 
 public class GameScreen extends JPanel implements Runnable{
@@ -15,13 +16,21 @@ public class GameScreen extends JPanel implements Runnable{
 		g.fillRect(0, 0, 1200, 800);
 		g.setColor(Color.WHITE);
 		g.fillRect(11, 11, 1169, 744);
+                Graphics2D g2 = (Graphics2D)g;
+                BasicStroke normalStroke = new BasicStroke(1);
+                BasicStroke wideStroke = new BasicStroke(3);
+                g2.setStroke(normalStroke);
+                
 		//super.repaint();
 		
 		g.drawString("Player Score: "+Integer.toString(GameInfo.playerScore)+"      Multiplier: "+Integer.toString(GameInfo.playerMultiplier), 10, 10);
 		for(int i=0; i<GameInfo.enemies.size();i++){
+                        g2.setStroke(wideStroke);
 			g=GameInfo.enemies.elementAt(i).Draw(g);    //This line is causing problems.
+                        g2.setStroke(normalStroke);
 		}
 		for(int i=0; i<GameInfo.players.size();i++){
+       
 			g=GameInfo.players.elementAt(i).Draw(g);			
 		}
 		for(int i=0; i<GameInfo.projectiles.size();i++){

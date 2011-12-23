@@ -5,7 +5,7 @@ import Utilities.EnemyUtilities;
 
 public class Dodger implements Movement{
 	int dodgeRadius = 50;
-	int dodgeSpeed = 4;
+	int dodgeSpeed = 2;
 	public Coordinates move(double xLoc, double yLoc, double vel) {
 		try{
 			Coordinates target = EnemyUtilities.getClosestPlayer(xLoc, yLoc);

@@ -5,6 +5,9 @@ import java.awt.Graphics;
 import Utilities.NuetralUtilities;
 import GameControls.GameInfo;
 import Utilities.Coordinates;
+import java.awt.BasicStroke;
+import java.awt.Graphics2D;
+import java.awt.Stroke;
 
 public class Line extends GameObject{
 	private Coordinates[] pointOrigins;
@@ -53,31 +56,36 @@ public class Line extends GameObject{
 	public void move(){
 		for(int i = 1; i < points.length; i++){
 			Coordinates point = pointOrigins[i];
-			Coordinates closestProjectile=NuetralUtilities.getClosestProjectile(point.yLoc, point.xLoc);
-			if(NuetralUtilities.calcDistance(point, closestProjectile)<affectDistance){
+			Coordinates closestProjectile=NuetralUtilities.getClosestProjectile(point.xLoc, point.yLoc);
+			//If there is a projectile within affect distance, move current point away from it 
+                        if(NuetralUtilities.calcDistance(point, closestProjectile)<affectDistance){
 				point= new Coordinates(point.xLoc+(point.xLoc-closestProjectile.xLoc), point.yLoc+(point.yLoc-closestProjectile.yLoc));
-				points[i]=point;
 			}
+                        //If there isn't ease points back towards their origin (This easing is clearly broken)
 			else{
-				//points[i]=new Coordinates(pointOrigins[i].xLoc, pointOrigins[i].yLoc);
-				//This is wrong
 				if((int)points[i].xLoc!=(int)pointOrigins[i].xLoc&&(int)points[i].yLoc!=(int)pointOrigins[i].yLoc){
-					points[i]=new Coordinates((points[i].xLoc+pointOrigins[i].xLoc)/2,(points[i].yLoc+pointOrigins[i].yLoc)/2);
-				}
-				else{
-					points[i]=new Coordinates(pointOrigins[i].xLoc, pointOrigins[i].yLoc);	
+					point =new Coordinates((points[i].xLoc+pointOrigins[i].xLoc)/2,(points[i].yLoc+pointOrigins[i].yLoc)/2);
 				}
 			}
+                        points[i] = point;
 		}
 	}
 	
 	public Graphics Draw(Graphics g){
+                Graphics2D g2 = (Graphics2D)g;
 		g.setColor(Color.LIGHT_GRAY);
 		for(int i = 1; i < points.length; i++){
 			Coordinates start = points[i-1];
 			Coordinates end = points[i];
+                        //Stroke oldStroke = g2.getStroke();
+                        //Color oldColor = g2.getColor();
+                        //g2.setColor(new Color(0,0,0, 90));
+                        //g2.setStroke(new BasicStroke(2));
+                        //g2.drawLine((int)start.xLoc, (int)start.yLoc, (int)end.xLoc, (int)end.yLoc);
+                        //g2.setColor(oldColor);
+                        //g2.setStroke(oldStroke);
 			g.drawLine((int)start.xLoc, (int)start.yLoc, (int)end.xLoc, (int)end.yLoc);
-		}
+                }
 		return g;
 	}
 }

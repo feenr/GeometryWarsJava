@@ -16,9 +16,9 @@ public class NuetralUtilities {
 		for(int i=0; i<GameInfo.projectiles.size(); i++){
 			double projectileX =GameInfo.projectiles.elementAt(i).getXLoc();
 			double projectileY =GameInfo.projectiles.elementAt(i).getYLoc();
-			double xDist =xLoc-projectileX;
+			double xDist =Math.abs(xLoc-projectileX);
 			if(xDist<closestProjectile){
-				double yDist =yLoc-projectileY; 
+				double yDist =Math.abs(yLoc-projectileY); 
 				if(yDist<closestProjectile){
 					double distance = Math.sqrt(Math.pow(xDist, 2)+Math.pow(yDist, 2));
 					if(distance<closestProjectile){
