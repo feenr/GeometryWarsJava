@@ -54,7 +54,7 @@ public class Player extends Sprite{
 			Projectile laser = new Projectile(angle, xLoc, yLoc);
 			GameInfo.projectiles.add(laser);
 			shotTimer = shotDelay;
-                        SoundUtilities.playSound(("Resources/Laser_burst.wav"));
+                        SoundUtilities.playSound(("/Resources/Laser_burst.wav"));
 		}
 	}
 	
