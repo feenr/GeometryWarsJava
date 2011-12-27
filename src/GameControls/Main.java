@@ -1,5 +1,6 @@
 package GameControls;
 
+import Utilities.SoundUtilities;
 import java.awt.Color;
 
 import javax.swing.JFrame;
@@ -12,6 +13,7 @@ public class Main {
 		JFrame gameFrame = new JFrame();
 		gameFrame.setIgnoreRepaint(true);
 		GameScreen gameScreen = new GameScreen();
+                SoundUtilities gameSound = new SoundUtilities();
 		Thread gameScreenThread = new Thread(gameScreen);
 		gameScreenThread.start();
 		gameFrame.setBounds(20, 20, 1200, 800);
@@ -23,5 +25,6 @@ public class Main {
 		gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		gameFrame.setResizable(false);
 		gameFrame.setVisible(true);
+                
 	}
 }

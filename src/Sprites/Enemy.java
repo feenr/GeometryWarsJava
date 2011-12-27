@@ -1,6 +1,7 @@
 package Sprites;
 import GameControls.GameInfo;
 import Objects.*;
+import Utilities.SoundUtilities;
 
 public class Enemy extends Sprite{
 	public void hit(){
@@ -16,5 +17,6 @@ public class Enemy extends Sprite{
 		}
 		GameInfo.playerScore+=2*GameInfo.playerMultiplier;
 		isAlive = false;
+                SoundUtilities.playSound("Resources/Bubble-pop.wav");
 	}
 }

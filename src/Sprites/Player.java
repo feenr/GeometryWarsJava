@@ -13,6 +13,7 @@ import Utilities.Coordinates;
 import GameControls.GameInfo;
 import GameControls.UserInput;
 import Movement.*;
+import Utilities.SoundUtilities;
 
 public class Player extends Sprite{
 	double angle = 0;
@@ -53,6 +54,7 @@ public class Player extends Sprite{
 			Projectile laser = new Projectile(angle, xLoc, yLoc);
 			GameInfo.projectiles.add(laser);
 			shotTimer = shotDelay;
+                        SoundUtilities.playSound(("Resources/Laser_burst.wav"));
 		}
 	}
 	
