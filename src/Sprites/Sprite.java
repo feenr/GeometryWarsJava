@@ -30,4 +30,5 @@ public class Sprite extends GameObject{
 	public boolean isAlive(){
 		return isAlive;
 	}
+        
 }

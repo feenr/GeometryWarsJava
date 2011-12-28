@@ -8,13 +8,13 @@ import Movement.*;
 public class EnemyRandomWalker extends Enemy{
 	public EnemyRandomWalker(){
 		vel = 4;
-		size = 8;
+		size = 16;
 		setMovementType(new Random());
 	}
 	
 	public Graphics Draw(Graphics g){
 		g.setColor(Color.MAGENTA);
-		g.drawOval(getXLoc()-(int)size, getYLoc()-(int)size, (int)(2*size), (int)(2*size));
+		g.drawOval(getXLoc()-(int)(0.5*size), getYLoc()-(int)(0.5*size), (int)(size), (int)(size));
 		return g;
 	}
 }

@@ -13,7 +13,7 @@ import Utilities.Coordinates;
 public class EnemyParent extends Enemy{
 	
 	public EnemyParent(){
-		size = 10;
+		size = 20;
 		vel = 2;
 		setMovementType(new Follower());
 	}
@@ -57,7 +57,7 @@ public class EnemyParent extends Enemy{
 	
 	public Graphics Draw(Graphics g){
 		g.setColor(Color.cyan);
-		g.drawOval(getXLoc()-(int)size, getYLoc()-(int)size, (int)(2*size), (int)(2*size));
+		g.drawOval(getXLoc()-(int)(0.5*size), getYLoc()-(int)(0.5*size), (int)(size), (int)(size));
 		return g;
 	}
 }

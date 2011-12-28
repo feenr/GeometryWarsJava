@@ -13,7 +13,7 @@ import Utilities.NuetralUtilities;
 public class EnemeyFollower extends Enemy{
 	public EnemeyFollower(){
 		vel = 4;
-		size = 10;
+		size = 20;
 		setMovementType(new Follower());
 	}
 	
@@ -48,7 +48,7 @@ public class EnemeyFollower extends Enemy{
 	
 	public Graphics Draw(Graphics g){
 		g.setColor(Color.BLUE);
-		g.drawOval(getXLoc()-(int)size, getYLoc()-(int)size, (int)(2*size), (int)(2*size));
+		g.drawOval(getXLoc()-(int)(0.5*size), getYLoc()-(int)(0.5*size), (int)(size), (int)(size));
 		return g;
 	}
 }

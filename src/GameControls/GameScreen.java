@@ -25,9 +25,13 @@ public class GameScreen extends JPanel implements Runnable{
 		
 		g.drawString("Player Score: "+Integer.toString(GameInfo.playerScore)+"      Multiplier: "+Integer.toString(GameInfo.playerMultiplier), 10, 10);
 		for(int i=0; i<GameInfo.enemies.size();i++){
-                        g2.setStroke(wideStroke);
-			g=GameInfo.enemies.elementAt(i).Draw(g);    //This line is causing problems.
-                        g2.setStroke(normalStroke);
+                        //g2.setStroke(wideStroke);
+			boolean shadowsEnabled=true; //TODO
+                        if(shadowsEnabled){
+                            g=GameInfo.enemies.elementAt(i).DrawShadow(g);                       
+                        }
+                        g=GameInfo.enemies.elementAt(i).Draw(g);
+                        //g2.setStroke(normalStroke);
 		}
 		for(int i=0; i<GameInfo.players.size();i++){
        

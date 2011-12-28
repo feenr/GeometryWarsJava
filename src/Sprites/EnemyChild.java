@@ -10,14 +10,14 @@ public class EnemyChild extends Enemy{
 	public EnemyChild(double xLoc, double yLoc){
 		this.xLoc=xLoc;
 		this.yLoc=yLoc;
-		size = 5;
+		size = 10;
 		vel = 2;
 		setMovementType(new Spinner());
 	}
 	
 	public Graphics Draw(Graphics g){
 		g.setColor(Color.cyan);
-		g.drawOval(getXLoc()-(int)size, getYLoc()-(int)size, (int)(2*size), (int)(2*size));
+		g.drawOval(getXLoc()-(int)(0.5*size), getYLoc()-(int)(0.5*size), (int)(size), (int)(size));
 		return g;
 	}
 }

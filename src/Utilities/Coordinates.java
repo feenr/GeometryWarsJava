@@ -1,5 +1,7 @@
 package Utilities;
 
+
+//This should be replaced with java.awt.Point
 public class Coordinates {
 	public double yLoc, xLoc;
 	

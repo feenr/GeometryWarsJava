@@ -19,7 +19,7 @@ import java.awt.geom.RoundRectangle2D;
 public class EnemyDodger extends Enemy{
         
 	public EnemyDodger(){
-		size = 10;
+		size = 20;
 		vel = 2;
 		setMovementType(new Dodger());
 	}
@@ -56,21 +56,14 @@ public class EnemyDodger extends Enemy{
 	
 	public Graphics Draw(Graphics g){
                 Graphics2D g2 = (Graphics2D)g;
-                Paint oldPaint = g2.getPaint();
-                RadialGradientPaint colorToTrans = new RadialGradientPaint((int)xLoc+2, (int)yLoc+2, 10, new float[] { 0.0f, 1.0f }, new Color[] { Color.lightGray, new Color(240,240,240, 0) });
-                Stroke oldStroke = g2.getStroke();
-                g2.setPaint(colorToTrans);
-                g2.fillOval((int)xLoc-10+2, (int)yLoc-10+2, 20, 20);
+                double size = 0.5 * this.size;
                 g2.setColor(Color.orange);
-                g2.setStroke(new BasicStroke(2));
-		g2.drawLine((int)(xLoc+size), (int)yLoc, (int)xLoc, (int)(yLoc+size));
+                g2.drawLine((int)(xLoc+size), (int)yLoc, (int)xLoc, (int)(yLoc+size));
 		g2.drawLine((int)xLoc, (int)(yLoc+size), (int)(xLoc-size), (int)yLoc);
 		g2.drawLine((int)(xLoc-size), (int)yLoc, (int)xLoc, (int)(yLoc-size));
 		g2.drawLine((int)xLoc, (int)(yLoc-size), (int)(xLoc+size), (int)yLoc);
 		//g.drawOval(getXLoc()-(int)size, getYLoc()-(int)size, (int)(2*size), (int)(2*size));
-                g2.setPaint(oldPaint);
-                g2.setStroke(oldStroke);
-		return g2;
+                return g2;
 	}
 }
  
