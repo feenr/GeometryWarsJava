@@ -89,23 +89,23 @@ public class GameControl implements Runnable {
 	public void MoveObjects() {
 		//double startTime = System.nanoTime();
 		for (int i = 0; i < GameInfo.enemies.size(); i++) {
-			GameInfo.enemies.elementAt(i).move();
+			GameInfo.enemies.get(i).move();
 		}
 		
 		for (int i = 0; i < GameInfo.players.size(); i++) {
-			GameInfo.players.elementAt(i).move();
+			GameInfo.players.get(i).move();
 		}
 		
 		for (int i = 0; i < GameInfo.geoms.size(); i++) {
-			GameInfo.geoms.elementAt(i).move();
+			GameInfo.geoms.get(i).move();
 		}
 		
 		for (int i = 0; i < GameInfo.projectiles.size(); i++) {
-			GameInfo.projectiles.elementAt(i).move();
+			GameInfo.projectiles.get(i).move();
 		}
 		
 		for (int i = 0; i < GameInfo.effects.size(); i++) {
-			GameInfo.effects.elementAt(i).move();
+			GameInfo.effects.get(i).move();
 		}
 		//System.out.println("Move Objects time: "+(System.nanoTime()-startTime));
 	}
@@ -126,20 +126,20 @@ public class GameControl implements Runnable {
 		//double startTime = System.nanoTime();
 		//Check for collisions between players an enemies
 		for (int i = 0; i < GameInfo.players.size(); i++) {
-			Coordinates playerCoords = new Coordinates(GameInfo.players.elementAt(i).getXLoc(),GameInfo.players.elementAt(i).getYLoc());
+			Coordinates playerCoords = new Coordinates(GameInfo.players.get(i).getXLoc(),GameInfo.players.get(i).getYLoc());
 			for (int j = 0; j < GameInfo.enemies.size(); j++) {
-				Coordinates enemyCoords = new Coordinates(GameInfo.enemies.elementAt(j).getXLoc(),GameInfo.enemies.elementAt(j).getYLoc());
+				Coordinates enemyCoords = new Coordinates(GameInfo.enemies.get(j).getXLoc(),GameInfo.enemies.get(j).getYLoc());
 				double distance = NuetralUtilities.calcDistance(playerCoords, enemyCoords);
-				if (distance < GameInfo.enemies.elementAt(j).getSize()+ GameInfo.players.elementAt(i).getSize()) {
-					GameInfo.players.elementAt(i).hit();
-					GameInfo.enemies.elementAt(j).hit();
+				if (distance < GameInfo.enemies.get(j).getSize()+ GameInfo.players.get(i).getSize()) {
+					GameInfo.players.get(i).hit();
+					GameInfo.enemies.get(j).hit();
 				}
 			}
 			for(int j = 0; j < GameInfo.geoms.size(); j++){
-				Coordinates geomCoords = new Coordinates(GameInfo.geoms.elementAt(j).getXLoc(),GameInfo.geoms.elementAt(j).getYLoc());
+				Coordinates geomCoords = new Coordinates(GameInfo.geoms.get(j).getXLoc(),GameInfo.geoms.get(j).getYLoc());
 				double distance = NuetralUtilities.calcDistance(playerCoords, geomCoords);
-				if(distance < GameInfo.geoms.elementAt(j).getSize()+GameInfo.players.elementAt(i).getSize()){
-					GameInfo.geoms.elementAt(j).hit();
+				if(distance < GameInfo.geoms.get(j).getSize()+GameInfo.players.get(i).getSize()){
+					GameInfo.geoms.get(j).hit();
 				}
 			}
 		}
@@ -147,13 +147,13 @@ public class GameControl implements Runnable {
 		//Check for collisions between enemies and objects
 		for (int i = 0; i < GameInfo.enemies.size(); i++ ){
 			for (int j = 0; j < GameInfo.projectiles.size(); j++) {
-				Coordinates enemyCoords = new Coordinates(GameInfo.enemies.elementAt(i).getXLoc(), GameInfo.enemies.elementAt(i).getYLoc());
-				Coordinates objectCoords = new Coordinates(GameInfo.projectiles.elementAt(j).getXLoc(), GameInfo.projectiles.elementAt(j).getYLoc());
+				Coordinates enemyCoords = new Coordinates(GameInfo.enemies.get(i).getXLoc(), GameInfo.enemies.get(i).getYLoc());
+				Coordinates objectCoords = new Coordinates(GameInfo.projectiles.get(j).getXLoc(), GameInfo.projectiles.get(j).getYLoc());
 				double distance = NuetralUtilities.calcDistance(enemyCoords, objectCoords);
-				if (distance < GameInfo.enemies.elementAt(i).getSize()+GameInfo.projectiles.elementAt(j).getSize()) {
-					if(GameInfo.projectiles.elementAt(j).isAlive()){
-						GameInfo.enemies.elementAt(i).hit();
-						GameInfo.projectiles.elementAt(j).hit();
+				if (distance < GameInfo.enemies.get(i).getSize()+GameInfo.projectiles.get(j).getSize()) {
+					if(GameInfo.projectiles.get(j).isAlive()){
+						GameInfo.enemies.get(i).hit();
+						GameInfo.projectiles.get(j).hit();
 					}
 				}
 			}
@@ -161,27 +161,27 @@ public class GameControl implements Runnable {
 
 		//Remove objects which have been destroyed
 		for(int i=GameInfo.players.size()-1; i>=0; i--){
-			if(GameInfo.players.elementAt(i).isAlive()==false){
+			if(GameInfo.players.get(i).isAlive()==false){
 				GameInfo.players.remove(i);
 			}
 		}
 		for(int i=GameInfo.enemies.size()-1; i>=0; i--){
-			if(GameInfo.enemies.elementAt(i).isAlive()==false){
+			if(GameInfo.enemies.get(i).isAlive()==false){
 				GameInfo.enemies.remove(i);
 			}
 		}
 		for(int i=GameInfo.projectiles.size()-1; i>=0; i--){
-			if(GameInfo.projectiles.elementAt(i).isAlive()==false){
+			if(GameInfo.projectiles.get(i).isAlive()==false){
 				GameInfo.projectiles.remove(i);
 			}
 		}
 		for(int i=GameInfo.effects.size()-1; i>=0; i--){
-			if(GameInfo.effects.elementAt(i).isAlive()==false){
+			if(GameInfo.effects.get(i).isAlive()==false){
 				GameInfo.effects.remove(i);
 			}
 		}
 		for(int i=GameInfo.geoms.size()-1; i>=0; i--){
-			if(GameInfo.geoms.elementAt(i).isAlive()==false){
+			if(GameInfo.geoms.get(i).isAlive()==false){
 				GameInfo.geoms.remove(i);
 			}
 		}

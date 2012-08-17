@@ -14,8 +14,8 @@ public class NuetralUtilities {
 		Coordinates projectileLocation = new Coordinates(0, 0);
 		double closestProjectile = Integer.MAX_VALUE;
 		for(int i=0; i<GameInfo.projectiles.size(); i++){
-			double projectileX =GameInfo.projectiles.elementAt(i).getXLoc();
-			double projectileY =GameInfo.projectiles.elementAt(i).getYLoc();
+			double projectileX =GameInfo.projectiles.get(i).getXLoc();
+			double projectileY =GameInfo.projectiles.get(i).getYLoc();
 			double xDist =Math.abs(xLoc-projectileX);
 			if(xDist<closestProjectile){
 				double yDist =Math.abs(yLoc-projectileY); 
@@ -35,8 +35,8 @@ public class NuetralUtilities {
 		Coordinates enemyLocation = new Coordinates(0, 0);
 		double closestEnemy = Integer.MAX_VALUE;
 		for(int i=0; i<GameInfo.enemies.size(); i++){
-			double enemyX =GameInfo.enemies.elementAt(i).getXLoc();
-			double enemyY =GameInfo.enemies.elementAt(i).getYLoc();
+			double enemyX =GameInfo.enemies.get(i).getXLoc();
+			double enemyY =GameInfo.enemies.get(i).getYLoc();
 			double xDist = xLoc-enemyX;
 			if(xDist<closestEnemy){
 				double yDist = yLoc-enemyY;
@@ -56,8 +56,8 @@ public class NuetralUtilities {
 		Coordinates playerLocation = new Coordinates(0, 0);
 		double closestPlayer = Integer.MAX_VALUE;
 		for(int i=0; i<GameInfo.players.size(); i++){
-			double playerX =GameInfo.players.elementAt(i).getXLoc();
-			double playerY =GameInfo.players.elementAt(i).getYLoc();
+			double playerX =GameInfo.players.get(i).getXLoc();
+			double playerY =GameInfo.players.get(i).getYLoc();
 			double xDist =xLoc-playerX;
 			if(xDist<closestPlayer){
 				double yDist =yLoc-playerY;

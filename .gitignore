@@ -1,3 +1,8 @@
-/build/
-/dist/
-/nbproject/private/
+nbproject/*
+build/*
+bin/*
+.project
+.classpath
+.metadata
+build.xml
+manifest.mf

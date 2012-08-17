@@ -26,20 +26,19 @@ public class GameScreen extends JPanel implements Runnable{
 		g.drawString("Player Score: "+Integer.toString(GameInfo.playerScore)+"      Multiplier: "+Integer.toString(GameInfo.playerMultiplier), 10, 10);
 		for(int i=0; i<GameInfo.enemies.size();i++){
                         //g2.setStroke(wideStroke);
-			boolean shadowsEnabled=true; //TODO
-                        if(shadowsEnabled){
-                            g=GameInfo.enemies.elementAt(i).DrawShadow(g);                       
-                        }
-                        g=GameInfo.enemies.elementAt(i).Draw(g);
-                        //g2.setStroke(normalStroke);
+			if(GameInfo.shadowsEnabled){
+                g=GameInfo.enemies.get(i).DrawShadow(g);                       
+            }
+            g=GameInfo.enemies.get(i).Draw(g);
+            //g2.setStroke(normalStroke);
 		}
 		for(int i=0; i<GameInfo.players.size();i++){
        
-			g=GameInfo.players.elementAt(i).Draw(g);			
+			g=GameInfo.players.get(i).Draw(g);			
 		}
 		for(int i=0; i<GameInfo.projectiles.size();i++){
 			try{
-				g=GameInfo.projectiles.elementAt(i).Draw(g);
+				g=GameInfo.projectiles.get(i).Draw(g);
 			}
 			catch(Exception e){
 				System.out.println("Tried to draw a non-existant object");
@@ -47,14 +46,14 @@ public class GameScreen extends JPanel implements Runnable{
 		}
 		for(int i=0; i<GameInfo.effects.size();i++){
 			try{
-			g=GameInfo.effects.elementAt(i).Draw(g);
+			g=GameInfo.effects.get(i).Draw(g);
 			}
 			catch(Exception e){
 				System.out.println("Tried to draw a non-existant object");
 			}
 		}
 		for(int i=0; i<GameInfo.geoms.size();i++){
-			g=GameInfo.geoms.elementAt(i).Draw(g);			
+			g=GameInfo.geoms.get(i).Draw(g);			
 		}
 	}
 	
