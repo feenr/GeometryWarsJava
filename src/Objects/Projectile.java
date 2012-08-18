@@ -29,11 +29,13 @@ public class Projectile extends GameObject{
 		lastX=xLoc;
 		lastY=yLoc;
 		distance++;
-		splashCount--;
-		if(splashCount < 0){
-			Splash splash = new Splash(xLoc, yLoc);
-			GameInfo.effects.add(splash);
-			splashCount = splashMax+(int)(Math.random()*2);
+		if(GameInfo.projectileSplashEnabled == true){
+			splashCount--;
+			if(splashCount < 0){
+				Splash splash = new Splash(xLoc, yLoc);
+				GameInfo.effects.add(splash);
+				splashCount = splashMax+(int)(Math.random()*2);
+			}
 		}
 		Coordinates newLoc = moveType.move(xLoc, yLoc, vel);
 		yLoc = newLoc.getYLoc();

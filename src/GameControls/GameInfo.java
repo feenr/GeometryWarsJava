@@ -17,5 +17,8 @@ public class GameInfo {
 	public static ArrayList<SpawnPoint> spawns= new ArrayList<SpawnPoint>();
 	public static ArrayList<GameObject> effects= new ArrayList<GameObject>();
 	public static int boardHeight, BoardWidth;
+	
+	//Display settings;
 	public static boolean shadowsEnabled = true;
+	public static boolean projectileSplashEnabled = false;
 }
